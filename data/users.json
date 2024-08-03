@@ -6,5 +6,61 @@
             "Topic2"
         ],
         "id": 1
+    },
+    {
+        "user_id": "user124",
+        "interested_topics": [
+            "Topic3",
+            "Topic7"
+        ],
+        "id": 2
+    },
+    {
+        "user_id": "user42",
+        "interested_topics": [
+            "Topic42",
+            "Topic43"
+        ],
+        "id": 3
+    },
+    {
+        "user_id": "user43",
+        "interested_topics": [
+            "Topic44",
+            "Topic45"
+        ],
+        "id": 4
+    },
+    {
+        "user_id": "user44",
+        "interested_topics": [
+            "Topic46",
+            "Topic47"
+        ],
+        "id": 5
+    },
+    {
+        "user_id": "user45",
+        "interested_topics": [
+            "Topic48",
+            "Topic49"
+        ],
+        "id": 6
+    },
+    {
+        "user_id": "user46",
+        "interested_topics": [
+            "Topic50",
+            "Topic51"
+        ],
+        "id": 7
+    },
+    {
+        "user_id": "dolton",
+        "interested_topics": [
+            "Topic1",
+            "Topic2"
+        ],
+        "id": 8
     }
 ]

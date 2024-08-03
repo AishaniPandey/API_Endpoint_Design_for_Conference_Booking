@@ -1,6 +1,6 @@
 # from flask import Blueprint, request, jsonify
 # from pydantic import ValidationError
-# from app.crud import create_booking, get_conference_by_id, get_user_by_id, get_bookings_by_conference, get_user_bookings, get_booking_by_id
+# from app.crud import create_booking, get_conference_by_id, get_user_by_id, get_bookings_by_conference, get_user_bookings, get_booking_by_id, get_bookings, save_bookings
 # from app.schemas import BookingCreate
 
 # booking_bp = Blueprint('booking', __name__)
@@ -82,7 +82,7 @@
 #         waitlisted_bookings = [b for b in conference_bookings if b['status'] == 'waitlisted']
 #         if waitlisted_bookings:
 #             waitlisted_bookings[0]['status'] = 'confirmed'
-
+    
 #     save_bookings(bookings)
 #     return jsonify({"message": "Booking canceled"}), 200
 
@@ -91,6 +91,9 @@ from flask import Blueprint, request, jsonify
 from pydantic import ValidationError
 from app.crud import create_booking, get_conference_by_id, get_user_by_id, get_bookings_by_conference, get_user_bookings, get_booking_by_id, get_bookings, save_bookings
 from app.schemas import BookingCreate
+import logging
+
+logging.basicConfig(level=logging.INFO)
 
 booking_bp = Blueprint('booking', __name__)
 
@@ -164,13 +167,14 @@ def cancel_booking(booking_id: int):
         return jsonify({"error": "Booking not found"}), 404
 
     bookings = get_bookings()
-    bookings = [b for b in bookings if b['id'] != booking_id]
+    updated_bookings = [b for b in bookings if b['id'] != booking_id]
 
     if booking['status'] == 'confirmed':
         conference_bookings = get_bookings_by_conference(booking['conference_id'])
         waitlisted_bookings = [b for b in conference_bookings if b['status'] == 'waitlisted']
         if waitlisted_bookings:
             waitlisted_bookings[0]['status'] = 'confirmed'
+            updated_bookings.append(waitlisted_bookings[0])
     
-    save_bookings(bookings)
+    save_bookings(updated_bookings)
     return jsonify({"message": "Booking canceled"}), 200

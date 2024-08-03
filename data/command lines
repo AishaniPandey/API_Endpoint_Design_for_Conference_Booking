@@ -1,3 +1,96 @@
+Test adding conference
+
+$headers = @{
+    "Content-Type" = "application/json"
+}
+$body = @{
+    "name" = "Test Conference"
+    "location" = "Test Location"
+    "topics" = @("Topic1", "Topic2")
+    "start_time" = "2024-08-03T09:00:00Z"
+    "end_time" = "2024-08-03T21:00:00Z"
+    "available_slots" = 100
+} | ConvertTo-Json
+
+Invoke-WebRequest -Uri http://127.0.0.1:5000/api/v1/conferences -Method POST -Headers $headers -Body $body
+
+$headers = @{
+    "Content-Type" = "application/json"
+}
+$body = @{
+    "name" = "conference 3"
+    "location" = "HOAD"
+    "topics" = @("Topic1", "Topic2")
+    "start_time" = "2024-08-03T03:30:00Z"
+    "end_time" = "2024-08-03T05:30:00Z"
+    "available_slots" = 100
+} | ConvertTo-Json
+
+Invoke-WebRequest -Uri http://127.0.0.1:5000/api/v1/conferences -Method POST -Headers $headers -Body $body
+
+
+$headers = @{
+    "Content-Type" = "application/json"
+}
+$body = @{
+    "name" = "Conference 1"
+    "location" = "Test Location 1"
+    "topics" = @("Topic1", "Topic2")
+    "start_time" = "2024-08-03T09:00:00Z"
+    "end_time" = "2024-08-03T21:00:00Z"
+    "available_slots" = 100
+} | ConvertTo-Json
+
+Invoke-WebRequest -Uri http://127.0.0.1:5000/api/v1/conferences -Method POST -Headers $headers -Body $body
+
+$headers = @{
+    "Content-Type" = "application/json"
+}
+$body = @{
+    "name" = "Conference 2"
+    "location" = "Test Location 1"
+    "topics" = @("Topic1", "Topic2")
+    "start_time" = "2024-08-03T09:00:00Z"
+    "end_time" = "2024-08-03T21:00:00Z"
+    "available_slots" = 100
+} | ConvertTo-Json
+
+Invoke-WebRequest -Uri http://127.0.0.1:5000/api/v1/conferences -Method POST -Headers $headers -Body $body
+
+Test adding user 
+
+$headers = @{
+    "Content-Type" = "application/json"
+}
+$body = @{
+    "user_id" = "user123"
+    "interested_topics" = @("Topic1", "Topic2")
+} | ConvertTo-Json
+
+Invoke-WebRequest -Uri http://127.0.0.1:5000/api/v1/users -Method POST -Headers $headers -Body $body 
+
+$headers = @{
+    "Content-Type" = "application/json"
+}
+$body = @{
+    "user_id" = "dolton"
+    "interested_topics" = @("Topic1", "Topic2")
+} | ConvertTo-Json
+
+Invoke-WebRequest -Uri http://127.0.0.1:5000/api/v1/users -Method POST -Headers $headers -Body $body 
+
+$headers = @{
+    "Content-Type" = "application/json"
+}
+$body = @{
+    "user_id" = "user124"
+    "interested_topics" = @("Topic3", "Topic7")
+} | ConvertTo-Json
+
+Invoke-WebRequest -Uri http://127.0.0.1:5000/api/v1/users -Method POST -Headers $headers -Body $body
+
+
+
 Test booking a conference:
 
 $headers = @{
@@ -9,7 +102,69 @@ $body = @{
     "status" = "pending"
 } | ConvertTo-Json
 
-Invoke-WebRequest -Uri http://127.0.0.1:5000/api/v1/bookings -Method POST -Headers $headers -Body $body
+Invoke-WebRequest -Uri http://127.0.0.1:5000/api/v1/bookings -Method POST -Headers $headers -Body $
+
+$headers = @{
+    "Content-Type" = "application/json"
+}
+$body = @{
+    "user_id" = "dolton"
+    "conference_id" = 10
+    "status" = "confirmed"
+} | ConvertTo-Json
+
+Invoke-WebRequest -Uri http://127.0.0.1:5000/api/v1/bookings -Method POST -Headers $headers -Body $
+
+#
+$booking10_1Body = @{
+    user_id = "dolton"
+    conference_id = 10
+    status = "confirmed"
+} | ConvertTo-Json
+Invoke-WebRequest -Uri http://127.0.0.1:5000/api/v1/bookings -Method POST -ContentType "application/json" -Body $booking10_1Body
+
+$booking09_1Body = @{
+    user_id = "dolton"
+    conference_id = 09
+    status = "confirmed"
+} | ConvertTo-Json
+Invoke-WebRequest -Uri http://127.0.0.1:5000/api/v1/bookings -Method POST -ContentType "application/json" -Body $booking09_1Body
+
+
+$headers = @{
+    "Content-Type" = "application/json"
+}
+$body = @{
+    "user_id" = "user123"
+    "conference_id" = 1
+    "status" = "pending"
+} | ConvertTo-Json
+
+Invoke-WebRequest -Uri http://127.0.0.1:5000/api/v1/bookings -Method POST -Headers $headers -Body $
+
+$headers = @{
+    "Content-Type" = "application/json"
+}
+$body = @{
+    "user_id" = "dolton"
+    "conference_id" = 10
+    "status" = "confirmed"
+} | ConvertTo-Json
+
+Invoke-WebRequest -Uri http://127.0.0.1:5000/api/v1/bookings -Method POST -Headers $headers -Body $
+
+$headers = @{
+    "Content-Type" = "application/json"
+}
+$body = @{
+    "user_id" = "user124"
+    "conference_id" = 1
+    "status" = "pending"
+} | ConvertTo-Json
+
+Invoke-WebRequest -Uri http://127.0.0.1:5000/api/v1/bookings -Method POST -Headers $headers -Body $
+
+
 
 
 Test getting booking status 
@@ -90,3 +245,16 @@ This command captures the response in the `$response` variable and then prints t
    $response.Content
    ```
 
+
+Overlapping: 
+
+$booking42_1Body = @{
+    user_id = "user42"
+    conference_id = 1
+    status = "confirmed"
+} | ConvertTo-Json
+Invoke-WebRequest -Uri http://127.0.0.1:5000/api/v1/bookings -Method POST -ContentType "application/json" -Body $booking42_1Body
+
+
+
+ashutosh@motorq.com 
