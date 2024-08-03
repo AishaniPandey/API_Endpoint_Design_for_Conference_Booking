@@ -1,0 +1,25 @@
+Test booking a conference:
+
+$headers = @{
+    "Content-Type" = "application/json"
+}
+$body = @{
+    "user_id" = "user123"
+    "conference_id" = 1
+    "status" = "pending"
+} | ConvertTo-Json
+
+Invoke-WebRequest -Uri http://127.0.0.1:5000/api/v1/bookings -Method POST -Headers $headers -Body $body
+
+
+Test getting booking status 
+
+Invoke-WebRequest -Uri http://127.0.0.1:5000/api/v1/bookings/1 -Method GET
+
+Test Confirm waitlist booking
+
+Invoke-WebRequest -Uri http://127.0.0.1:5000/api/v1/bookings/confirm_waitlist/1 -Method POST
+
+Test Cancel booking
+
+Invoke-WebRequest -Uri http://127.0.0.1:5000/api/v1/bookings/1 -Method DELETE
