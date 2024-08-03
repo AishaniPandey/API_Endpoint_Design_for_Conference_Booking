@@ -62,18 +62,18 @@ Method: POST
 
 ### Booking
 
-- Create Booking
-URL: /api/v1/bookings
+- Create Booking,
+URL: /api/v1/bookings,
 Method: POST
 
-- Get Booking Status
-URL: /api/v1/bookings/<booking_id>
+- Get Booking Status,
+URL: /api/v1/bookings/<booking_id>,
 Method: GET
 
-- Confirm Waitlist Booking
-URL: /api/v1/bookings/confirm_waitlist/<booking_id>
+- Confirm Waitlist Booking,
+URL: /api/v1/bookings/confirm_waitlist/<booking_id>,
 Method: POST
 
--Cancel Booking
-URL: /api/v1/bookings/<booking_id>
+-Cancel Booking,
+URL: /api/v1/bookings/<booking_id>,
 Method: DELETE
