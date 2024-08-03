@@ -1,0 +1,10 @@
+[
+    {
+        "user_id": "user123",
+        "interested_topics": [
+            "Topic1",
+            "Topic2"
+        ],
+        "id": 1
+    }
+]

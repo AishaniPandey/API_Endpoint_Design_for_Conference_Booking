@@ -1,0 +1,14 @@
+[
+    {
+        "name": "Test Conference",
+        "location": "Test Location",
+        "topics": [
+            "Topic1",
+            "Topic2"
+        ],
+        "start_time": "2024-08-03T09:00:00+00:00",
+        "end_time": "2024-08-03T21:00:00+00:00",
+        "available_slots": 100,
+        "id": 1
+    }
+]
