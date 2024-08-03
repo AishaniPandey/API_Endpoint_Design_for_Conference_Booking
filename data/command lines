@@ -23,3 +23,70 @@ Invoke-WebRequest -Uri http://127.0.0.1:5000/api/v1/bookings/confirm_waitlist/1 
 Test Cancel booking
 
 Invoke-WebRequest -Uri http://127.0.0.1:5000/api/v1/bookings/1 -Method DELETE
+
+
+
+
+
+# Testing the Conference API with PowerShell
+
+1. **Search by Location:**
+   ```powershell
+   Invoke-WebRequest -Uri "http://127.0.0.1:5000/api/v1/conferences/search?location=Test%20Location" -Method GET
+   ```
+
+2. **Search by Topic:**
+   ```powershell
+   Invoke-WebRequest -Uri "http://127.0.0.1:5000/api/v1/conferences/search?topic=Topic1" -Method GET
+   ```
+
+3. **Search by Name:**
+   ```powershell
+   Invoke-WebRequest -Uri "http://127.0.0.1:5000/api/v1/conferences/search?name=Test%20Conference" -Method GET
+   ```
+
+4. **Search by Start Time:**
+   ```powershell
+   Invoke-WebRequest -Uri "http://127.0.0.1:5000/api/v1/conferences/search?start_time=2024-08-03T09:00:00Z" -Method GET
+   ```
+
+5. **Search by End Time:**
+   ```powershell
+   Invoke-WebRequest -Uri "http://127.0.0.1:5000/api/v1/conferences/search?end_time=2024-08-03T21:00:00Z" -Method GET
+   ```
+
+6. **Search by Multiple Criteria:**
+   ```powershell
+   Invoke-WebRequest -Uri "http://127.0.0.1:5000/api/v1/conferences/search?location=Test%20Location&topic=Topic1&name=Test%20Conference" -Method GET
+   ```
+
+7. **Suggested Conferences:**
+   ```powershell
+   Invoke-WebRequest -Uri "http://127.0.0.1:5000/api/v1/conferences/suggested/user123" -Method GET
+   ```
+
+### Checking Responses
+
+To see the output of `Invoke-WebRequest`, you can capture the response and output it in a readable format:
+
+```powershell
+$response = Invoke-WebRequest -Uri "http://127.0.0.1:5000/api/v1/conferences/search?location=Test%20Location" -Method GET
+$response.Content
+```
+
+This command captures the response in the `$response` variable and then prints the content of the response.
+
+### Example
+
+1. **Search by Location and Print Response:**
+   ```powershell
+   $response = Invoke-WebRequest -Uri "http://127.0.0.1:5000/api/v1/conferences/search?location=Test%20Location" -Method GET
+   $response.Content
+   ```
+
+2. **Suggested Conferences and Print Response:**
+   ```powershell
+   $response = Invoke-WebRequest -Uri "http://127.0.0.1:5000/api/v1/conferences/suggested/user123" -Method GET
+   $response.Content
+   ```
+
