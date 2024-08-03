@@ -62,5 +62,21 @@
             "Topic2"
         ],
         "id": 8
+    },
+    {
+        "user_id": "user90",
+        "interested_topics": [
+            "Topic90",
+            "Topic91"
+        ],
+        "id": 9
+    },
+    {
+        "user_id": "user56",
+        "interested_topics": [
+            "Topic56",
+            "Topic57"
+        ],
+        "id": 10
     }
 ]

@@ -125,5 +125,16 @@
         "end_time": "2024-08-03T05:30:00+00:00",
         "available_slots": 100,
         "id": 11
+    },
+    {
+        "name": "Conference90",
+        "location": "Location90",
+        "topics": [
+            "Topic90"
+        ],
+        "start_time": "2024-08-03T18:00:00+00:00",
+        "end_time": "2024-08-03T20:00:00+00:00",
+        "available_slots": 1,
+        "id": 12
     }
 ]
